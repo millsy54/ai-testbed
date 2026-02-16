@@ -1,0 +1,233 @@
+:root {
+  --bg: #f2f6fb;
+  --panel: #ffffff;
+  --panel-border: #d6dde8;
+  --title: #12243b;
+  --body: #2e435d;
+  --muted: #5f748f;
+  --ok-bg: #e8f8ef;
+  --ok-text: #0f6b39;
+  --warn-bg: #fff4dd;
+  --warn-text: #804d00;
+  --dragging-bg: #e5f0ff;
+  --ready-bg: #e8f8ef;
+  --failed-bg: #fde9e9;
+  --accent: #1f6feb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: var(--body);
+  background:
+    radial-gradient(circle at 0 0, #dce9ff 0%, transparent 42%),
+    radial-gradient(circle at 100% 0, #dbffe8 0%, transparent 38%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--title);
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+}
+
+.kicker {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.subtitle {
+  margin: 12px 0 0;
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+.support-banner {
+  margin-top: 20px;
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+}
+
+.support-banner.ok {
+  background: var(--ok-bg);
+  color: var(--ok-text);
+  border-color: #a9e2bf;
+}
+
+.support-banner.warn {
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  border-color: #f3d49d;
+}
+
+.file-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.file-card {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 14px;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  user-select: none;
+}
+
+.file-card.is-draggable:hover {
+  border-color: #aac7f4;
+  box-shadow: 0 8px 18px rgba(43, 96, 167, 0.14);
+  transform: translateY(-1px);
+}
+
+.file-card.is-disabled {
+  opacity: 0.85;
+}
+
+.file-token {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  background: #f0f5ff;
+  border: 1px solid #cad7f2;
+  border-radius: 10px;
+  color: #20406f;
+  font-weight: 700;
+  font-size: 0.83rem;
+}
+
+.file-main {
+  min-width: 0;
+}
+
+.filename {
+  color: var(--title);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.filetype,
+.filehint {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.87rem;
+  overflow-wrap: anywhere;
+}
+
+.file-side {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.status-idle {
+  background: #edf1f7;
+  color: #4a607a;
+}
+
+.status-loading {
+  background: #eef3ff;
+  border-color: #cad7f2;
+  color: #3d5680;
+}
+
+.status-dragging {
+  background: var(--dragging-bg);
+  border-color: #adc8f2;
+  color: #2459a8;
+}
+
+.status-ready {
+  background: var(--ready-bg);
+  border-color: #a9e2bf;
+  color: var(--ok-text);
+}
+
+.status-failed {
+  background: var(--failed-bg);
+  border-color: #efb1b1;
+  color: #7d2323;
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 7px;
+  border: 1px solid #95b7ee;
+  color: #1a53ab;
+  background: #ecf4ff;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.download-link:hover {
+  background: #deedff;
+}
+
+.state-dragging {
+  border-color: #adc8f2;
+}
+
+.state-ready {
+  border-color: #a9e2bf;
+}
+
+.state-failed {
+  border-color: #efb1b1;
+}
+
+@media (max-width: 760px) {
+  .file-card {
+    grid-template-columns: 56px 1fr;
+  }
+
+  .file-token {
+    width: 56px;
+    height: 56px;
+    font-size: 0.72rem;
+  }
+
+  .file-side {
+    grid-column: 1 / -1;
+    justify-items: start;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
